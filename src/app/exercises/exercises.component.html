@@ -1,1 +1,8 @@
-<app-exercise-list (addButtonEmitter)="addButtonClicked($event)"></app-exercise-list>
+<div class="row">
+    <div class="col-md-5">
+        <app-exercise-list></app-exercise-list>
+    </div>
+    <div class="col-md-7">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Exercise } from './exercise.model';
 
 @Component({
   selector: 'app-exercises',
@@ -6,14 +7,9 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./exercises.component.css']
 })
 export class ExercisesComponent implements OnInit {
-  @Output() addClickedEmitter = new EventEmitter<string>();
-
   constructor() { }
 
   ngOnInit() {
-  }
-
-  addButtonClicked(view: string) {
-    this.addClickedEmitter.emit(view)
+    
   }
 }

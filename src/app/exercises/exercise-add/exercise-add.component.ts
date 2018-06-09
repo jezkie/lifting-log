@@ -1,4 +1,5 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-exercise-add',
@@ -6,15 +7,17 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./exercise-add.component.css']
 })
 export class ExerciseAddComponent implements OnInit {
-  @Output() insertEmmiter = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   onSave(){
-    this.insertEmmiter.emit('exer-list');
+    this.router.navigate(['exercises']);
   }
 
+  onCancel() {
+    this.router.navigate(['exercises']);
+  }
 }

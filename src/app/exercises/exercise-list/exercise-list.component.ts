@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Exercise } from '../exercise.model';
+import { ExerciseService } from '../exercise.service';
 
 @Component({
   selector: 'app-exercise-list',
@@ -7,19 +8,12 @@ import { Exercise } from '../exercise.model';
   styleUrls: ['./exercise-list.component.css']
 })
 export class ExerciseListComponent implements OnInit {
-  exercises: Exercise[] = [
-    new Exercise('Squat', 'Squat', 5, 5),
-    new Exercise('Bench Press', 'Bench press', 5, 5)
-  ];
+  exercises: Exercise[];
 
-  @Output() addButtonEmitter = new EventEmitter<string>();
-  constructor() { }
+  constructor(private exerciseService: ExerciseService) { }
 
   ngOnInit() {
-  }
-
-  onClickAddBtn() {
-    this.addButtonEmitter.emit('exer-add');
+    this.exercises = this.exerciseService.getExercises();
   }
 
 }

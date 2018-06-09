@@ -1,11 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2" *ngIf="currentView === 'exer-list'">
-      <app-exercises  (addClickedEmitter)="currentView = $event"></app-exercises>
-    </div>
-    <div class="col-md-8 col-md-offset-3" *ngIf="currentView !== 'exer-list'">
-      <app-exercise-add  (insertEmmiter)="currentView = $event"></app-exercise-add>
-    </div>
+    <router-outlet></router-outlet>
   </div>  
 </div>
 
