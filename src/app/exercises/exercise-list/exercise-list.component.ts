@@ -14,6 +14,10 @@ export class ExerciseListComponent implements OnInit {
 
   ngOnInit() {
     this.exercises = this.exerciseService.getExercises();
+    this.exerciseService.exercisesChanged.subscribe(
+      (exercises: Exercise[])=>{
+        this.exercises = exercises;
+    });
   }
 
 }
