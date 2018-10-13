@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { ExerciseDetailComponent } from './exercises/exercise-detail/exercise-de
 
 import { AppRoutingModule } from './app-routing.module';
 import { ExerciseService } from './exercises/exercise.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,12 @@ import { ExerciseService } from './exercises/exercise.service';
     ExercisesComponent,
     ExerciseListComponent,
     ExerciseAddComponent,
-    ExerciseDetailComponent
+    ExerciseDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [ExerciseService],
