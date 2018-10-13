@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExerciseService } from '../exercise.service';
 import { Exercise } from '../exercise.model';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-exercise-add',
@@ -9,18 +10,23 @@ import { Exercise } from '../exercise.model';
   styleUrls: ['./exercise-add.component.css']
 })
 export class ExerciseAddComponent implements OnInit {
-  name: string;
-  desc: string;
-  sets: number;
-  reps: number;
+  exerciseForm: FormGroup;
 
   constructor(private router: Router, private exerciseService: ExerciseService) { }
 
   ngOnInit() {
+    this.exerciseForm = new FormGroup({
+      'name': new FormControl(null),
+      'description': new FormControl(null),
+      'sets': new FormControl(null),
+      'reps': new FormControl(null)
+    });
   }
 
   onSave() {
-    this.exerciseService.addExercise(new Exercise(this.name, this.desc, this.sets, this.reps));
+    this.exerciseService.addExercise(
+      this.exerciseForm.value
+    );
     this.router.navigate(['exercises']);
   }
 
