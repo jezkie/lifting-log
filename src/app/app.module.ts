@@ -12,6 +12,7 @@ import { ExerciseDetailComponent } from './exercises/exercise-detail/exercise-de
 import { AppRoutingModule } from './app-routing.module';
 import { ExerciseService } from './exercises/exercise.service';
 import { LoginComponent } from './login/login.component';
+import { ExerciseEditComponent } from './exercises/exercise-edit/exercise-edit.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     ExerciseListComponent,
     ExerciseAddComponent,
     ExerciseDetailComponent,
-    LoginComponent
+    LoginComponent,
+    ExerciseEditComponent
   ],
   imports: [
     BrowserModule,

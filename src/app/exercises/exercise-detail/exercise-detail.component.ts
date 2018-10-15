@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Exercise } from '../exercise.model';
 import { ExerciseService } from '../exercise.service';
@@ -11,7 +11,10 @@ import { ExerciseService } from '../exercise.service';
 })
 export class ExerciseDetailComponent implements OnInit {
   exercise: Exercise;
-  constructor(private route: ActivatedRoute, private exerciseService: ExerciseService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute, 
+    private exerciseService: ExerciseService) { }
 
   ngOnInit() {
     this.exercise = this.exerciseService.getExerciseById(+this.route.snapshot.params['id']);
@@ -20,6 +23,10 @@ export class ExerciseDetailComponent implements OnInit {
         this.exercise = this.exerciseService.getExerciseById(+params['id']);
       }
     )
+  }
+
+  onEdit() {
+    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
   }
 
 }
