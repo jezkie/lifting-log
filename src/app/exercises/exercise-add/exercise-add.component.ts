@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExerciseService } from '../exercise.service';
 import { Exercise } from '../exercise.model';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-exercise-add',
@@ -16,10 +16,10 @@ export class ExerciseAddComponent implements OnInit {
 
   ngOnInit() {
     this.exerciseForm = new FormGroup({
-      'name': new FormControl(null),
+      'name': new FormControl(null, Validators.required),
       'description': new FormControl(null),
-      'sets': new FormControl(null),
-      'reps': new FormControl(null)
+      'sets': new FormControl(null, [Validators.required, Validators.max(5),Validators.min(1)]),
+      'reps': new FormControl(null, [Validators.required, Validators.min(1)])
     });
   }
 

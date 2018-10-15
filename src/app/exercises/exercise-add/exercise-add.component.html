@@ -5,12 +5,14 @@
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
           <input type="text" id="name" class="form-control" formControlName="name">
+          <span class="help-block" *ngIf="!exerciseForm.get('name').valid && exerciseForm.get('name').touched">Exercise name is required</span>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="desc">Description</label>
           <input type="text" id="description" class="form-control" formControlName="description">
+          
         </div>
       </div>
       <div class="row">
@@ -25,7 +27,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-primary" type="submit" (click)="onSave()">Save</button>
+          <button class="btn btn-primary" type="submit" (click)="onSave()" [disabled]="!exerciseForm.valid">Save</button>
           <button class="btn btn-default" (click)="onCancel()">Cancel</button>
         </div>
       </div>
