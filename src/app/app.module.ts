@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ExerciseService } from './exercises/exercise.service';
 import { LoginComponent } from './login/login.component';
 import { ExerciseEditComponent } from './exercises/exercise-edit/exercise-edit.component';
+import { ExerciseResolver } from './exercises/exercise-resolver.service';
+import { CanDeactivateGuard } from './exercises/exercise-edit/can-deactivate-guard.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { ExerciseEditComponent } from './exercises/exercise-edit/exercise-edit.c
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ExerciseService],
+  providers: [ExerciseService, ExerciseResolver, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 
 import { Exercise } from '../exercise.model';
 import { ExerciseService } from '../exercise.service';
@@ -17,12 +17,9 @@ export class ExerciseDetailComponent implements OnInit {
     private exerciseService: ExerciseService) { }
 
   ngOnInit() {
-    this.exercise = this.exerciseService.getExerciseById(+this.route.snapshot.params['id']);
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.exercise = this.exerciseService.getExerciseById(+params['id']);
-      }
-    )
+    this.route.data.subscribe(
+      (data: Data) => this.exercise = data['exercise'] 
+    );
   }
 
   onEdit() {
